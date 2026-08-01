@@ -102,7 +102,7 @@ export function CommissionControl({
           💡 Live Breakdown per ₦10,000 Trip
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', textAlign: 'center' }}>
+        <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', textAlign: 'center' }}>
           <div style={{ backgroundColor: 'rgba(255,255,255,0.06)', padding: '12px', borderRadius: '12px' }}>
             <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '600' }}>Deliva Platform ({delivaCommission}%)</div>
             <div style={{ fontSize: '16px', fontWeight: '800', color: '#38bdf8', marginTop: '4px' }}>
@@ -126,7 +126,7 @@ export function CommissionControl({
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="mobile-stack" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
         {savedSuccess ? (
           <span style={{ color: '#10b981', fontWeight: '700', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <CheckCircle2 size={18} /> Commission percentage updated!
@@ -136,7 +136,7 @@ export function CommissionControl({
         <button
           onClick={handleSave}
           disabled={saving || commission === currentCommission}
-          className="btn-primary"
+          className="btn-primary-deliva"
           style={{
             opacity: commission === currentCommission ? 0.6 : 1,
             cursor: commission === currentCommission ? 'not-allowed' : 'pointer',

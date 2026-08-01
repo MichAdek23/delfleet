@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Truck, ShieldCheck, LogOut, LayoutDashboard, ArrowRight } from 'lucide-react';
+import { Truck, ShieldCheck, LogOut, LayoutDashboard, ArrowRight, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   currentTab?: string;
@@ -10,6 +10,7 @@ interface NavbarProps {
 
 export function Navbar({ currentTab, onNavigate, companyName, onLogout }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +25,12 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
 
   const logoColor = isTransparentMode ? '#FFFFFF' : '#0F172A';
   const linkColor = isTransparentMode ? 'rgba(255, 255, 255, 0.9)' : '#475569';
-  const linkActiveColor = isTransparentMode ? '#FF6B6B' : '#FF6B6B';
+  const linkActiveColor = '#FF6B6B';
+
+  const handleNavClick = (tab: string) => {
+    onNavigate(tab);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header style={{
@@ -34,7 +40,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
       right: 0,
       zIndex: 1000,
       height: '76px',
-      backgroundColor: isTransparentMode ? 'transparent' : 'rgba(255, 255, 255, 0.95)',
+      backgroundColor: isTransparentMode ? 'transparent' : 'rgba(255, 255, 255, 0.96)',
       borderBottom: isTransparentMode ? 'none' : '1px solid #E2E8F0',
       backdropFilter: isTransparentMode ? 'none' : 'blur(16px)',
       WebkitBackdropFilter: isTransparentMode ? 'none' : 'blur(16px)',
@@ -52,7 +58,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
       }}>
         {/* Main Website Brand Logo: deliva. */}
         <div 
-          onClick={() => onNavigate('landing')}
+          onClick={() => handleNavClick('landing')}
           style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
         >
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
@@ -69,10 +75,10 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           </div>
         </div>
 
-        {/* Center Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+        {/* Center Desktop Links */}
+        <nav className="mobile-hide" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
           <button
-            onClick={() => onNavigate('landing')}
+            onClick={() => handleNavClick('landing')}
             style={{
               background: 'none',
               color: currentTab === 'landing' ? linkActiveColor : linkColor,
@@ -84,7 +90,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
             Home
           </button>
           <button
-            onClick={() => onNavigate('landing')}
+            onClick={() => handleNavClick('landing')}
             style={{
               background: 'none',
               color: linkColor,
@@ -96,7 +102,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
             Our Features
           </button>
           <button
-            onClick={() => onNavigate('landing')}
+            onClick={() => handleNavClick('landing')}
             style={{
               background: 'none',
               color: linkColor,
@@ -109,7 +115,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           </button>
           {companyName && (
             <button
-              onClick={() => onNavigate('dashboard')}
+              onClick={() => handleNavClick('dashboard')}
               style={{
                 background: 'none',
                 color: currentTab === 'dashboard' ? linkActiveColor : linkColor,
@@ -127,8 +133,8 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           )}
         </nav>
 
-        {/* Right Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        {/* Right Desktop Actions */}
+        <div className="mobile-hide" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           {companyName ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <div style={{
@@ -167,7 +173,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           ) : (
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <button
-                onClick={() => onNavigate('login')}
+                onClick={() => handleNavClick('login')}
                 className="btn-secondary-deliva"
                 style={{
                   padding: '10px 22px',
@@ -181,7 +187,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
                 Sign In
               </button>
               <button
-                onClick={() => onNavigate('signup')}
+                onClick={() => handleNavClick('signup')}
                 className="btn-primary-deliva"
                 style={{ padding: '10px 22px', fontSize: '14px', borderRadius: '30px' }}
               >
@@ -191,7 +197,97 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
             </div>
           )}
         </div>
+
+        {/* Mobile Hamburger Toggle Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="mobile-hamburger"
+          style={{
+            background: 'none',
+            border: 'none',
+            color: isTransparentMode ? '#FFFFFF' : '#0F172A',
+            padding: '8px',
+            cursor: 'pointer',
+          }}
+        >
+          {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
+
+      {/* Mobile Menu Slide-down Drawer */}
+      {mobileMenuOpen && (
+        <div style={{
+          position: 'fixed',
+          top: '76px',
+          left: 0,
+          right: 0,
+          backgroundColor: '#0D1B2A',
+          color: '#FFFFFF',
+          padding: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          zIndex: 999,
+        }}>
+          <button
+            onClick={() => handleNavClick('landing')}
+            style={{
+              textAlign: 'left',
+              background: 'none',
+              color: '#FFFFFF',
+              fontSize: '16px',
+              fontWeight: '700',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            Home
+          </button>
+          
+          {companyName ? (
+            <>
+              <button
+                onClick={() => handleNavClick('dashboard')}
+                className="btn-primary-deliva"
+                style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }}
+              >
+                <LayoutDashboard size={18} />
+                Open Fleet Dashboard
+              </button>
+              {onLogout && (
+                <button
+                  onClick={() => { onLogout(); setMobileMenuOpen(false); }}
+                  className="btn-secondary-deliva"
+                  style={{ width: '100%', justifyContent: 'center', color: '#EF4444', borderColor: '#EF4444' }}
+                >
+                  <LogOut size={16} />
+                  Sign Out
+                </button>
+              )}
+            </>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
+              <button
+                onClick={() => handleNavClick('signup')}
+                className="btn-primary-deliva"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                Register Fleet Company (₦30,000)
+                <ArrowRight size={18} />
+              </button>
+              <button
+                onClick={() => handleNavClick('login')}
+                className="btn-secondary-deliva"
+                style={{ width: '100%', justifyContent: 'center', color: '#FFFFFF', borderColor: '#FFFFFF' }}
+              >
+                Sign In to Fleet Portal
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }

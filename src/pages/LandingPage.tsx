@@ -35,7 +35,6 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
       {/* Hero Section matching main website (100vh Full Background) */}
       <section style={{
         position: 'relative',
-        height: '100vh',
         minHeight: '680px',
         display: 'flex',
         alignItems: 'center',
@@ -43,7 +42,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
         backgroundColor: '#070F17',
         overflow: 'hidden',
       }}>
-        {/* Full 100vh Background Image */}
+        {/* Full Background Image */}
         <img
           src={heroBgImg}
           alt="Deliva Fleet Hero"
@@ -70,15 +69,15 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
           zIndex: 2,
           maxWidth: '1200px',
           width: '100%',
-          padding: '120px 32px 60px 32px',
+          padding: '130px 24px 70px 24px',
         }}>
           <div style={{ maxWidth: '740px' }}>
 
             {/* Heading matching main website */}
-            <h1 style={{
-              fontSize: '52px',
+            <h1 className="mobile-title-sm" style={{
+              fontSize: '50px',
               fontWeight: '800',
-              lineHeight: '62px',
+              lineHeight: '1.2',
               letterSpacing: '-1.5px',
               color: '#FFFFFF',
               marginBottom: '24px',
@@ -88,10 +87,10 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             </h1>
 
             {/* Subheading matching main website */}
-            <p style={{
+            <p className="mobile-text-sm" style={{
               fontSize: '18px',
               color: 'rgba(255, 255, 255, 0.9)',
-              lineHeight: '28px',
+              lineHeight: '1.6',
               marginBottom: '40px',
               fontWeight: '400',
               textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
@@ -100,7 +99,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             </p>
 
             {/* Button Row matching main website */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <div className="mobile-stack-buttons" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
               <button
                 onClick={() => onNavigate('signup')}
                 className="btn-primary-deliva"
@@ -131,28 +130,29 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
       </section>
 
       {/* Metrics Bar */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '50px 24px 0 24px' }}>
-        <div style={{
+      <section style={{ backgroundColor: '#FFFFFF', padding: '40px 20px 0 20px' }}>
+        <div className="mobile-grid-1col" style={{
           maxWidth: '1200px',
           margin: '0 auto',
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '24px',
-          padding: '32px 40px',
+          padding: '32px 36px',
           backgroundColor: '#F8FAFC',
           borderRadius: '24px',
           border: '1px solid #E2E8F0',
           boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)',
+          textAlign: 'center',
         }}>
           <div>
             <div style={{ fontSize: '34px', fontWeight: '800', color: '#0D1B2A' }}>10% Fixed</div>
             <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>Deliva Platform Fee</div>
           </div>
-          <div style={{ borderLeft: '1px solid #E2E8F0', borderRight: '1px solid #E2E8F0', paddingLeft: '36px' }}>
+          <div>
             <div style={{ fontSize: '34px', fontWeight: '800', color: '#FF6B6B' }}>Custom %</div>
             <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>Your Company Commission</div>
           </div>
-          <div style={{ paddingLeft: '36px' }}>
+          <div>
             <div style={{ fontSize: '34px', fontWeight: '800', color: '#10B981' }}>Instant</div>
             <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>3-Way Wallet Settlement</div>
           </div>
@@ -160,30 +160,30 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
       </section>
 
       {/* Interactive Revenue Split Calculator Section */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '90px 24px', borderBottom: '1px solid #E2E8F0' }}>
+      <section style={{ backgroundColor: '#FFFFFF', padding: '60px 20px', borderBottom: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#0F172A', letterSpacing: '-1px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 className="mobile-title-sm" style={{ fontSize: '36px', fontWeight: '800', color: '#0F172A', letterSpacing: '-1px' }}>
               Transparent Automated 3-Way Revenue Split
             </h2>
-            <p style={{ fontSize: '16px', color: '#475569', marginTop: '8px' }}>
+            <p style={{ fontSize: '15px', color: '#475569', marginTop: '8px' }}>
               Test your revenue distribution live per delivery trip.
             </p>
           </div>
 
-          <div style={{
+          <div className="mobile-grid-1col" style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            gap: '40px',
+            gap: '32px',
             backgroundColor: '#F8FAFC',
             borderRadius: '24px',
-            padding: '40px',
+            padding: '36px 24px',
             border: '1px solid #E2E8F0',
             alignItems: 'center',
           }}>
             <div>
-              <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#0F172A', marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0F172A', marginBottom: '20px' }}>
                 Commission Split Simulator
               </h3>
 
@@ -271,19 +271,19 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
       </section>
 
       {/* Fleet Capabilities Section matching CoresSection.tsx */}
-      <section style={{ padding: '90px 24px', backgroundColor: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+      <section style={{ padding: '60px 20px', backgroundColor: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#0F172A', letterSpacing: '-1px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 className="mobile-title-sm" style={{ fontSize: '36px', fontWeight: '800', color: '#0F172A', letterSpacing: '-1px' }}>
               Enterprise Logistics Capabilities
             </h2>
-            <p style={{ fontSize: '16px', color: '#475569', marginTop: '8px' }}>
+            <p style={{ fontSize: '15px', color: '#475569', marginTop: '8px' }}>
               Logistics solutions built for growing businesses. Manage deliveries and scale with confidence.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
             
             <div className="card-deliva">
               <div style={{
@@ -353,20 +353,20 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
       </section>
 
       {/* Onboarding & Pricing Section */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '90px 24px' }}>
+      <section style={{ backgroundColor: '#FFFFFF', padding: '60px 20px' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div style={{
+          <div className="mobile-grid-1col" style={{
             backgroundColor: '#F8FAFC',
             borderRadius: '24px',
-            padding: '48px',
+            padding: '36px 24px',
             border: '1px solid #E2E8F0',
             display: 'grid',
             gridTemplateColumns: '1.2fr 0.8fr',
-            gap: '40px',
+            gap: '32px',
             alignItems: 'center',
           }}>
             <div>
-              <h2 style={{ fontSize: '32px', fontWeight: '800', color: '#0F172A', marginBottom: '12px', letterSpacing: '-0.5px' }}>
+              <h2 className="mobile-title-sm" style={{ fontSize: '32px', fontWeight: '800', color: '#0F172A', marginBottom: '12px', letterSpacing: '-0.5px' }}>
                 One-Time Company Registration
               </h2>
               <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.6, marginBottom: '24px' }}>
@@ -393,14 +393,14 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
               backgroundColor: '#FFFFFF',
               border: '1px solid #E2E8F0',
               borderRadius: '20px',
-              padding: '36px 28px',
+              padding: '32px 20px',
               textAlign: 'center',
               boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)',
             }}>
               <div style={{ fontSize: '13px', color: '#64748b', fontWeight: '600', marginBottom: '4px' }}>
                 Partner Registration Fee
               </div>
-              <div style={{ fontSize: '46px', fontWeight: '800', color: '#0F172A', marginBottom: '4px' }}>
+              <div style={{ fontSize: '42px', fontWeight: '800', color: '#0F172A', marginBottom: '4px' }}>
                 ₦30,000
               </div>
               <div style={{ fontSize: '12px', color: '#FF6B6B', fontWeight: '700', marginBottom: '24px' }}>

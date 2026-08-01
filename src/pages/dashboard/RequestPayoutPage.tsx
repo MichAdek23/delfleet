@@ -126,7 +126,7 @@ export function RequestPayoutPage() {
       )}
 
       {/* Main Layout Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '24px' }}>
+      <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
         
         {/* Left: Withdrawal Form */}
         <form onSubmit={handleWithdraw} className="card-deliva" style={{ padding: '32px' }}>

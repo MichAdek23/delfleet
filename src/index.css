@@ -141,6 +141,16 @@ button {
 
 /* Mobile Responsive Utility Classes */
 @media (max-width: 768px) {
+  .auth-left-banner-col {
+    display: none !important;
+  }
+
+  .auth-form-col {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    padding: 32px 20px !important;
+  }
+
   .dashboard-main-content {
     margin-left: 0 !important;
   }
@@ -172,7 +182,7 @@ button {
   }
 
   .card-deliva {
-    padding: 20px !important;
+    padding: 20px 16px !important;
     border-radius: 18px !important;
   }
   
@@ -180,6 +190,8 @@ button {
     padding: 12px 20px !important;
     font-size: 14px !important;
     border-radius: 20px !important;
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   .mobile-grid-1col {
@@ -193,6 +205,19 @@ button {
   .mobile-stack {
     flex-direction: column !important;
     align-items: stretch !important;
+    gap: 16px !important;
+  }
+
+  .mobile-stack-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  
+  .mobile-stack-buttons > button,
+  .mobile-stack-buttons > a {
+    width: 100% !important;
+    justify-content: center !important;
   }
   
   .mobile-full-width {

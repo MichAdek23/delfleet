@@ -79,7 +79,7 @@ export function CompanySignup({ onSignupSuccess }: CompanySignupProps = {}) {
 
       <form onSubmit={handleRegister}>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
+        <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
           <div>
             <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#0F172A', marginBottom: '6px' }}>
               Company Name *

@@ -40,7 +40,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
       </div>
 
       {/* Right Column: 35% Form Area */}
-      <div style={{
+      <div className="auth-form-col" style={{
         width: '35%',
         flex: '0 0 35%',
         display: 'flex',

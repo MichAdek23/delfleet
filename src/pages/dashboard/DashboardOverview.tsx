@@ -31,7 +31,7 @@ export function DashboardOverview() {
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '28px', maxWidth: '1000px', width: '100%', margin: '0 auto' }}>
       
       {/* Welcome Banner */}
-      <div style={{
+      <div className="mobile-stack" style={{
         backgroundColor: '#0D1B2A',
         borderRadius: '24px',
         padding: '32px 40px',
@@ -46,7 +46,7 @@ export function DashboardOverview() {
           <div style={{ fontSize: '13px', fontWeight: '700', color: '#FF6B6B', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '8px' }}>
             OVERVIEW DASHBOARD
           </div>
-          <h1 style={{ fontSize: '28px', fontWeight: '800', marginBottom: '8px', letterSpacing: '-0.5px' }}>
+          <h1 className="mobile-title-sm" style={{ fontSize: '28px', fontWeight: '800', marginBottom: '8px', letterSpacing: '-0.5px' }}>
             Welcome back, {company?.contact_name || company?.company_name}
           </h1>
           <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.6 }}>
@@ -54,7 +54,7 @@ export function DashboardOverview() {
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', zIndex: 2 }}>
+        <div className="mobile-stack-buttons" style={{ display: 'flex', gap: '12px', zIndex: 2 }}>
           <button
             onClick={() => navigate('/dashboard/add-driver')}
             className="btn-primary-deliva"

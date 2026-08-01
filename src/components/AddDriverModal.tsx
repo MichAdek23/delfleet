@@ -69,6 +69,8 @@ export function AddDriverModal({ isOpen, onClose, onAddDriver }: AddDriverModalP
         borderRadius: '24px',
         maxWidth: '540px',
         width: '100%',
+        maxHeight: '90vh',
+        overflowY: 'auto',
         boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)',
         overflow: 'hidden',
         animation: 'fadeIn 0.25s ease-out',
