@@ -97,7 +97,7 @@ export function FleetDriversPage() {
       </div>
 
       {/* Drivers Roster Table */}
-      <div className="card-deliva" style={{ overflow: 'hidden' }}>
+      <div className="card-deliva" style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '1px solid #E2E8F0', fontSize: '12px', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px' }}>

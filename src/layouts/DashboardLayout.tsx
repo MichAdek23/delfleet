@@ -14,6 +14,7 @@ import {
   RefreshCw,
   Bell,
   Search,
+  Compass,
 } from 'lucide-react';
 
 interface DashboardLayoutProps {
@@ -44,7 +45,8 @@ export function DashboardLayout({
 
   const navItems = [
     { label: 'Overview', path: '/dashboard', icon: LayoutDashboard, end: true },
-    { label: 'Drivers & Live Map', path: '/dashboard/drivers', icon: Users },
+    { label: 'Live GPS Map', path: '/dashboard/full-map', icon: Compass },
+    { label: 'Drivers', path: '/dashboard/drivers', icon: Users },
     { label: 'Commission Rates', path: '/dashboard/commissions', icon: Percent },
     { label: 'Bank Payouts', path: '/dashboard/payouts', icon: CreditCard },
     { label: 'Company Settings', path: '/dashboard/settings', icon: Settings },
@@ -84,7 +86,7 @@ export function DashboardLayout({
           transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(0)',
           boxShadow: '4px 0 24px rgba(0, 0, 0, 0.12)',
         }}
-        className="sidebar-container"
+        className={`sidebar-container sidebar-deliva ${mobileMenuOpen ? 'open' : ''}`}
       >
         {/* Brand Header */}
         <div style={{ padding: '24px 24px 20px 24px', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
@@ -207,10 +209,10 @@ export function DashboardLayout({
       </aside>
 
       {/* Main Content Area */}
-      <div style={{ flex: 1, marginLeft: '270px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+      <div className="dashboard-main-content" style={{ flex: 1, marginLeft: '270px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         
         {/* Top Navbar */}
-        <header style={{
+        <header className="dashboard-header" style={{
           height: '72px',
           backgroundColor: '#FFFFFF',
           borderBottom: '1px solid #E2E8F0',

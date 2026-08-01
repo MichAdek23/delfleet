@@ -15,6 +15,7 @@ import { DriverDetailsPage } from './pages/dashboard/DriverDetailsPage';
 import { CommissionSettingsPage } from './pages/dashboard/CommissionSettingsPage';
 import { BankPayoutsPage } from './pages/dashboard/BankPayoutsPage';
 import { RequestPayoutPage } from './pages/dashboard/RequestPayoutPage';
+import { FullMapPage } from './pages/dashboard/FullMapPage';
 import { CompanySettingsPage } from './pages/dashboard/CompanySettingsPage';
 import { AddDriverModal } from './components/AddDriverModal';
 import { WithdrawalModal } from './components/WithdrawalModal';
@@ -199,7 +200,7 @@ function AppContent() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#F8FAFC' }}>
-      
+
       <Routes>
         {/* Public Routes with Navbar */}
         <Route
@@ -304,6 +305,10 @@ function AppContent() {
           <Route
             path="request-payout"
             element={<RequestPayoutPage />}
+          />
+          <Route
+            path="full-map"
+            element={<FullMapPage />}
           />
           <Route
             path="settings"

@@ -129,8 +129,8 @@ export function DriverDetailsPage() {
       </div>
 
       {/* Performance Metrics Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-        
+      <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+
         <div className="card-deliva" style={{ padding: '24px' }}>
           <div style={{ fontSize: '13px', fontWeight: '700', color: '#64748B', marginBottom: '8px' }}>
             Total Completed Deliveries
@@ -182,7 +182,7 @@ export function DriverDetailsPage() {
       </div>
 
       {/* Driver Information Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+      <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
         
         {/* Personal & Licensing Info */}
         <div className="card-deliva" style={{ padding: '32px' }}>

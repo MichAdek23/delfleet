@@ -75,7 +75,7 @@ export function DashboardOverview() {
       </div>
 
       {/* Metric Cards Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+      <div className="mobile-grid-1col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
         
         <div className="card-deliva" style={{ padding: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -155,11 +155,11 @@ export function DashboardOverview() {
             </p>
           </div>
           <button
-            onClick={() => navigate('/dashboard/drivers')}
+            onClick={() => navigate('/dashboard/full-map')}
             className="btn-secondary-deliva"
             style={{ padding: '8px 18px', fontSize: '13px' }}
           >
-            Full Map View
+            📍 Open Full Map View
           </button>
         </div>
 
