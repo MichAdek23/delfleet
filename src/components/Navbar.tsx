@@ -23,8 +23,8 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
 
   const isTransparentMode = currentTab === 'landing' && !scrolled;
 
-  const logoColor = isTransparentMode ? '#FFFFFF' : '#0F172A';
-  const linkColor = isTransparentMode ? 'rgba(255, 255, 255, 0.9)' : '#475569';
+  const logoColor = '#0F172A';
+  const linkColor = '#475569';
   const linkActiveColor = '#FF6B6B';
 
   const handleNavClick = (tab: string) => {

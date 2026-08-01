@@ -32,17 +32,17 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
   return (
     <div className="animate-fade-in" style={{ backgroundColor: '#FFFFFF', color: '#0F172A' }}>
       
-      {/* Hero Section matching main website (100vh Full Background) */}
+      {/* Hero Section */}
       <section style={{
         position: 'relative',
-        minHeight: '680px',
+        minHeight: '640px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#070F17',
+        backgroundColor: '#FFFFFF',
         overflow: 'hidden',
       }}>
-        {/* Full Background Image */}
+        {/* Background Image without overlay */}
         <img
           src={heroBgImg}
           alt="Deliva Fleet Hero"
@@ -53,16 +53,9 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
+            opacity: 0.95,
           }}
         />
-
-        {/* Gradient Overlay for legibility & contrast */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(7, 15, 23, 0.45) 0%, rgba(7, 15, 23, 0.75) 100%)',
-          zIndex: 1,
-        }} />
 
         <div style={{
           position: 'relative',
@@ -73,39 +66,37 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
         }}>
           <div style={{ maxWidth: '740px' }}>
 
-            {/* Heading matching main website */}
+            {/* Heading in Black */}
             <h1 className="mobile-title-sm" style={{
               fontSize: '50px',
               fontWeight: '800',
               lineHeight: '1.2',
               letterSpacing: '-1.5px',
-              color: '#FFFFFF',
+              color: '#0F172A',
               marginBottom: '24px',
-              textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
             }}>
               Building the Trust Infrastructure for Logistics Commerce
             </h1>
 
-            {/* Subheading matching main website */}
+            {/* Subheading in Dark Charcoal */}
             <p className="mobile-text-sm" style={{
               fontSize: '18px',
-              color: 'rgba(255, 255, 255, 0.9)',
+              color: '#334155',
               lineHeight: '1.6',
               marginBottom: '40px',
-              fontWeight: '400',
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+              fontWeight: '600',
             }}>
               A technology-enabled logistics platform helping corporate fleet partners move goods reliably, fulfill orders seamlessly, and grow with confidence through transparent automated 3-way split solutions.
             </p>
 
-            {/* Button Row matching main website */}
+            {/* Button Row */}
             <div className="mobile-stack-buttons" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
               <button
                 onClick={() => onNavigate('signup')}
                 className="btn-primary-deliva"
                 style={{ padding: '16px 36px', fontSize: '16px' }}
               >
-                Register Fleet Company (₦30,000)
+                Register Fleet Company
                 <ArrowRight size={18} />
               </button>
 
@@ -115,10 +106,9 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 style={{
                   padding: '16px 32px',
                   fontSize: '16px',
-                  borderColor: '#FFFFFF',
-                  color: '#FFFFFF',
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(8px)',
+                  borderColor: '#0D1B2A',
+                  color: '#0D1B2A',
+                  backgroundColor: '#FFFFFF',
                 }}
               >
                 Sign In to Fleet Portal
