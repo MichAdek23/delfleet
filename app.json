@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Deliva Fleet Management",
+    "slug": "delfleet",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#204b7a"
+    },
+    "scheme": "delfleet",
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "EXPO_PUBLIC_SUPABASE_URL": "https://cgnhrvwhwpeemyrnsenz.supabase.co",
+      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsa2ljZ3dwc3NreW1uc3FzcnloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTI2MDQsImV4cCI6MjA1Mjk2ODYwNH0.kX9u12c6G0J9yJ8tB7Z9m7X6k5L4j3H2g1f0e9d8c7b"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+:root {
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Exact Deliva Main Website Design Tokens (LC) */
+  --lc-bg: #FFFFFF;
+  --lc-bg-alt: #F8FAFC;
+  --lc-surface: #FFFFFF;
+  --lc-surface-hover: #FFF0EC;
+  --lc-border: #E2E8F0;
+  --lc-border-light: rgba(226, 232, 240, 0.6);
+  --lc-primary: #0D1B2A;
+  --lc-primary-dark: #070F17;
+  --lc-primary-light: #F1F5F9;
+  --lc-accent: #FF6B6B;
+  --lc-accent-glow: rgba(255, 107, 107, 0.15);
+  --lc-success: #10B981;
+  --lc-text: #0F172A;
+  --lc-text-secondary: #475569;
+  --lc-text-muted: #94A3B8;
+  --lc-white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--lc-bg);
+  color: var(--lc-text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Button Designs matching HeroSection.tsx */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-deliva {
+  background-color: var(--lc-accent);
+  color: #FFFFFF;
+  padding: 15px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.25);
+}
+
+.btn-primary-deliva:hover {
+  background-color: #fa5252;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.35);
+}
+
+.btn-secondary-deliva {
+  background-color: transparent;
+  border: 1.5px solid var(--lc-primary);
+  color: var(--lc-primary);
+  padding: 15px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-secondary-deliva:hover {
+  background-color: rgba(13, 27, 42, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Badge styling matching HeroSection.tsx */
+.badge-deliva {
+  align-self: flex-start;
+  background-color: rgba(255, 107, 107, 0.12);
+  border: 1px solid rgba(255, 107, 107, 0.25);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--lc-accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Card Styling matching CoresSection.tsx */
+.card-deliva {
+  background-color: #FFFFFF;
+  border: 1px solid var(--lc-border);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+}
+
+.card-deliva:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
