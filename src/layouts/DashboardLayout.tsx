@@ -11,9 +11,6 @@ import {
   X,
   ShieldCheck,
   Building2,
-  RefreshCw,
-  Bell,
-  Search,
   Compass,
 } from 'lucide-react';
 
@@ -82,13 +79,11 @@ export function DashboardLayout({
           bottom: 0,
           left: 0,
           zIndex: 1000,
-          transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(0)',
           boxShadow: '4px 0 24px rgba(0, 0, 0, 0.12)',
         }}
         className={`sidebar-container sidebar-deliva ${mobileMenuOpen ? 'open' : ''}`}
       >
-        {/* Brand Header */}
+        {/* Brand Header: Logo without "Fleet" */}
         <div style={{ padding: '24px 24px 20px 24px', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div
@@ -99,9 +94,6 @@ export function DashboardLayout({
                 deliva
               </span>
               <span style={{ fontSize: '28px', fontWeight: '800', color: '#FF6B6B' }}>.</span>
-              <span style={{ fontSize: '11px', fontWeight: '700', color: '#FF6B6B', marginLeft: '6px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                Fleet
-              </span>
             </div>
 
             <button
@@ -114,7 +106,7 @@ export function DashboardLayout({
           </div>
         </div>
 
-        {/* Company Profile Card */}
+        {/* Company Profile Card with RC Number */}
         <div style={{ padding: '16px 20px' }}>
           <div style={{
             backgroundColor: 'rgba(255, 255, 255, 0.06)',
@@ -126,8 +118,8 @@ export function DashboardLayout({
             gap: '12px',
           }}>
             <div style={{
-              width: '40px',
-              height: '40px',
+              width: '42px',
+              height: '42px',
               borderRadius: '12px',
               backgroundColor: '#FF6B6B',
               color: '#FFFFFF',
@@ -136,16 +128,24 @@ export function DashboardLayout({
               justifyContent: 'center',
               fontWeight: '800',
               fontSize: '18px',
+              flexShrink: 0,
             }}>
               {company?.company_name?.[0] || 'C'}
             </div>
 
-            <div style={{ overflow: 'hidden' }}>
+            <div style={{ overflow: 'hidden', flex: 1 }}>
               <div style={{ fontSize: '14px', fontWeight: '700', color: '#FFFFFF', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {company?.company_name || 'Fleet Partner'}
               </div>
+              
               <div style={{ fontSize: '11px', color: '#10B981', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '700', marginTop: '2px' }}>
                 <ShieldCheck size={12} /> Verified Company
+              </div>
+
+              {/* RC Number on Sidebar */}
+              <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: '600', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <Building2 size={11} color="#94A3B8" />
+                <span>RC: {company?.registration_number || 'CAC-OK'}</span>
               </div>
             </div>
           </div>
@@ -211,78 +211,33 @@ export function DashboardLayout({
       {/* Main Content Area */}
       <div className="dashboard-main-content" style={{ flex: 1, marginLeft: '270px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         
-        {/* Top Navbar */}
-        <header className="dashboard-header" style={{
-          height: '72px',
-          backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid #E2E8F0',
-          padding: '0 32px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          position: 'sticky',
-          top: 0,
-          zIndex: 900,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#0F172A',
-                cursor: 'pointer',
-                display: 'none',
-              }}
-              className="mobile-hamburger"
-            >
-              <Menu size={22} />
-            </button>
-
-            <div style={{ fontSize: '18px', fontWeight: '800', color: '#0F172A' }}>
-              Fleet Management Portal
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <button
-              onClick={onRefresh}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 14px',
-                borderRadius: '10px',
-                backgroundColor: '#F8FAFC',
-                border: '1px solid #E2E8F0',
-                color: '#475569',
-                fontSize: '13px',
-                fontWeight: '600',
-              }}
-            >
-              <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
-              <span>Refresh Data</span>
-            </button>
-
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '6px 14px',
-              borderRadius: '20px',
-              backgroundColor: '#F8FAFC',
-              border: '1px solid #E2E8F0',
-            }}>
-              <Building2 size={16} color="#0D1B2A" />
-              <span style={{ fontSize: '13px', fontWeight: '700', color: '#0F172A' }}>
-                RC: {company?.registration_number || 'CAC-OK'}
-              </span>
-            </div>
-          </div>
-        </header>
+        {/* Mobile Floating Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="mobile-hamburger"
+          style={{
+            position: 'fixed',
+            top: '16px',
+            left: '16px',
+            zIndex: 800,
+            backgroundColor: '#0D1B2A',
+            color: '#FFFFFF',
+            border: 'none',
+            borderRadius: '12px',
+            padding: '10px 14px',
+            display: 'none',
+            alignItems: 'center',
+            gap: '8px',
+            fontSize: '13px',
+            fontWeight: '700',
+            boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
+          }}
+        >
+          <Menu size={18} /> Menu
+        </button>
 
         {/* Page Content Rendered Here */}
-        <main style={{
+        <main className="dashboard-main-padding" style={{
           flex: 1,
           padding: '36px 40px',
           maxWidth: '1280px',
@@ -290,12 +245,12 @@ export function DashboardLayout({
           margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
-          boxSizing: 'border-box',
+          gap: '32px',
         }}>
           <Outlet context={{ company, drivers, transactions, loading, onRefresh, setIsAddDriverOpen, setIsWithdrawalOpen, handleSaveCommission }} />
         </main>
-      </div>
 
+      </div>
     </div>
   );
 }
