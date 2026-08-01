@@ -57,7 +57,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
         justifyContent: 'space-between',
       }}>
         {/* Main Website Brand Logo: deliva. */}
-        <div 
+        <div
           onClick={() => handleNavClick('landing')}
           style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
         >
@@ -205,7 +205,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           style={{
             background: 'none',
             border: 'none',
-            color: isTransparentMode ? '#FFFFFF' : '#0F172A',
+            color: isTransparentMode ? '#FFFFFF' : '#204b7a',
             padding: '8px',
             cursor: 'pointer',
           }}
@@ -245,7 +245,7 @@ export function Navbar({ currentTab, onNavigate, companyName, onLogout }: Navbar
           >
             Home
           </button>
-          
+
           {companyName ? (
             <>
               <button
