@@ -129,46 +129,16 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Metrics Bar */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '40px 20px 0 20px' }}>
-        <div className="mobile-grid-1col" style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '24px',
-          padding: '32px 36px',
-          backgroundColor: '#F8FAFC',
-          borderRadius: '24px',
-          border: '1px solid #E2E8F0',
-          boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)',
-          textAlign: 'center',
-        }}>
-          <div>
-            <div style={{ fontSize: '34px', fontWeight: '800', color: '#0D1B2A' }}>10% Fixed</div>
-            <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>Deliva Platform Fee</div>
-          </div>
-          <div>
-            <div style={{ fontSize: '34px', fontWeight: '800', color: '#FF6B6B' }}>Custom %</div>
-            <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>Your Company Commission</div>
-          </div>
-          <div>
-            <div style={{ fontSize: '34px', fontWeight: '800', color: '#10B981' }}>Instant</div>
-            <div style={{ fontSize: '14px', color: '#475569', fontWeight: '600', marginTop: '2px' }}>3-Way Wallet Settlement</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Revenue Split Calculator Section */}
+      {/* Interactive Revenue Split & Live Pie Chart Section */}
       <section style={{ backgroundColor: '#FFFFFF', padding: '60px 20px', borderBottom: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 className="mobile-title-sm" style={{ fontSize: '36px', fontWeight: '800', color: '#0F172A', letterSpacing: '-1px' }}>
+            <h2 className="mobile-title-sm" style={{ fontSize: '36px', fontWeight: '800', color: '#204b7a', letterSpacing: '-1px' }}>
               Transparent Automated 3-Way Revenue Split
             </h2>
             <p style={{ fontSize: '15px', color: '#475569', marginTop: '8px' }}>
-              Test your revenue distribution live per delivery trip.
+              Real-time distribution visualization powered by Deliva's automated settlement engine.
             </p>
           </div>
 
@@ -182,14 +152,81 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             border: '1px solid #E2E8F0',
             alignItems: 'center',
           }}>
+            {/* Left Part: Dynamic Interactive Pie Chart */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#FFFFFF', padding: '32px 24px', borderRadius: '20px', border: '1px solid #E2E8F0', boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)' }}>
+              <div style={{ fontSize: '16px', fontWeight: '800', color: '#204b7a', marginBottom: '20px', textAlign: 'center' }}>
+                📊 Revenue Split Pie Chart Visualization
+              </div>
+
+              {/* Dynamic Conic-Gradient Pie Chart */}
+              <div style={{
+                position: 'relative',
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                background: `conic-gradient(#204b7a 0% 10%, #FF6B6B 10% ${10 + companyCommissionPct}%, #0D1B2A ${10 + companyCommissionPct}% 100%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 8px 24px rgba(32, 75, 122, 0.15)',
+                marginBottom: '28px',
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#FFFFFF',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: 'inset 0 2px 6px rgba(0,0,0,0.1)',
+                }}>
+                  <span style={{ fontSize: '11px', fontWeight: '700', color: '#64748B', textTransform: 'uppercase' }}>Trip Fare</span>
+                  <span style={{ fontSize: '18px', fontWeight: '800', color: '#204b7a' }}>₦{sampleTripFare.toLocaleString()}</span>
+                </div>
+              </div>
+
+              {/* Pie Chart Legend Items */}
+              <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: 'rgba(32, 75, 122, 0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#204b7a' }} />
+                    <span style={{ fontSize: '13px', fontWeight: '700', color: '#204b7a' }}>Deliva Platform Fee (10%)</span>
+                  </div>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#204b7a' }}>₦{delivaFee.toLocaleString()}</span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: 'rgba(255, 107, 107, 0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#FF6B6B' }} />
+                    <span style={{ fontSize: '13px', fontWeight: '700', color: '#FF6B6B' }}>Company Fleet Share ({companyCommissionPct}%)</span>
+                  </div>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#FF6B6B' }}>₦{companyEarnings.toLocaleString()}</span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: 'rgba(13, 27, 42, 0.06)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#0D1B2A' }} />
+                    <span style={{ fontSize: '13px', fontWeight: '700', color: '#0D1B2A' }}>Driver Net Earning ({90 - companyCommissionPct}%)</span>
+                  </div>
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#0D1B2A' }}>₦{driverNetEarnings.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Part: Interactive Simulator Controls */}
             <div>
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0F172A', marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#204b7a', marginBottom: '8px' }}>
                 Commission Split Simulator
               </h3>
+              <p style={{ fontSize: '14px', color: '#475569', marginBottom: '24px' }}>
+                Adjust trip fare and your company commission percentage to see live calculations.
+              </p>
 
               <div style={{ marginBottom: '24px' }}>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#475569', marginBottom: '8px' }}>
-                  Sample Delivery Trip Fare (₦)
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#0F172A', marginBottom: '8px' }}>
+                  Sample Delivery Trip Fare (₦) *
                 </label>
                 <input
                   type="number"
@@ -199,10 +236,10 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                     width: '100%',
                     padding: '12px 16px',
                     borderRadius: '12px',
-                    border: '1px solid #CBD5E1',
+                    border: '2px solid #204b7a',
                     fontSize: '18px',
                     fontWeight: '800',
-                    color: '#0F172A',
+                    color: '#204b7a',
                     backgroundColor: '#FFFFFF',
                   }}
                 />
@@ -210,7 +247,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
 
               <div style={{ marginBottom: '24px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <label style={{ fontSize: '13px', fontWeight: '700', color: '#475569' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700', color: '#0F172A' }}>
                     Your Fleet Company Rate (%)
                   </label>
                   <span style={{ fontSize: '18px', fontWeight: '800', color: '#FF6B6B' }}>
@@ -226,41 +263,19 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                   onChange={(e) => setCompanyCommissionPct(Number(e.target.value))}
                   style={{ width: '100%', accentColor: '#FF6B6B', cursor: 'pointer' }}
                 />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#94A3B8', marginTop: '4px', fontWeight: '600' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#64748B', marginTop: '4px', fontWeight: '600' }}>
                   <span>0%</span>
-                  <span>15% (Standard)</span>
+                  <span>15% (Recommended)</span>
                   <span>40% (Max)</span>
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#FFFFFF', padding: '16px', borderRadius: '12px', border: '1px solid #E2E8F0', fontSize: '13px', color: '#475569' }}>
-                💡 <strong>Instant Settlement:</strong> Delivery payments are split automatically into your company wallet immediately upon trip completion.
-              </div>
-            </div>
-
-            {/* Live Result Display */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ padding: '20px', borderRadius: '16px', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-                <div style={{ fontSize: '12px', color: '#94A3B8', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  TRIP FARE
+              <div style={{ backgroundColor: '#204b7a', padding: '20px', borderRadius: '16px', color: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ fontSize: '13px', fontWeight: '700', opacity: 0.9 }}>
+                  💡 Automated Paystack Settlement
                 </div>
-                <div style={{ fontSize: '26px', fontWeight: '800', color: '#0F172A', marginTop: '2px' }}>
-                  ₦{sampleTripFare.toLocaleString()}
-                </div>
-              </div>
-
-              <div style={{ padding: '24px', borderRadius: '16px', backgroundColor: '#0D1B2A', color: '#FFFFFF' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '13px', color: '#94A3B8', fontWeight: '600' }}>Deliva Platform Fee (10%)</span>
-                  <span style={{ fontSize: '16px', fontWeight: '800', color: '#38BDF8' }}>₦{delivaFee.toLocaleString()}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '13px', color: '#FF6B6B', fontWeight: '700' }}>Company Fleet Share ({companyCommissionPct}%)</span>
-                  <span style={{ fontSize: '20px', fontWeight: '800', color: '#FF6B6B' }}>₦{companyEarnings.toLocaleString()}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                  <span style={{ fontSize: '13px', color: '#6EE7B7', fontWeight: '600' }}>Driver Net Earning</span>
-                  <span style={{ fontSize: '20px', fontWeight: '800', color: '#10B981' }}>₦{driverNetEarnings.toLocaleString()}</span>
+                <div style={{ fontSize: '14px', lineHeight: '1.5' }}>
+                  When a driver completes a <strong>₦{sampleTripFare.toLocaleString()}</strong> order, <strong>₦{companyEarnings.toLocaleString()}</strong> is routed directly into your fleet company wallet instantly.
                 </div>
               </div>
             </div>
