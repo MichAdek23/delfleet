@@ -103,19 +103,41 @@ export function FleetDashboard({ company: initialCompany }: FleetDashboardProps)
     const { error } = await supabase
       .from('profiles')
       .insert({
+        nin: driverData.nin,
+        nin_verified: true,
         first_name: driverData.first_name,
+        middle_name: driverData.middle_name || null,
         last_name: driverData.last_name,
         email: driverData.email,
         phone: driverData.phone,
+        address: driverData.address || null,
         role: 'driver',
         fleet_id: company.id,
         is_fleet_driver: true,
         vehicle_type: driverData.vehicle_type,
         vehicle_plate_number: driverData.vehicle_plate,
+        vehicle_make_model: driverData.vehicle_make_model,
+        vehicle_color: driverData.vehicle_color,
+        avatar_url: driverData.avatar_url || null,
         is_verified: true,
       });
 
     if (error) throw error;
+
+    // Trigger driver welcome email credentials dispatch if function endpoint exists
+    try {
+      await supabase.functions.invoke('send-email-otp', {
+        body: {
+          email: driverData.email,
+          type: 'driver_welcome',
+          password: driverData.password,
+          company_name: company?.company_name || 'Fleet Partner',
+        },
+      });
+    } catch (e) {
+      console.warn('[Welcome Email Notice]', e);
+    }
+
     await fetchDashboardData();
   };
 

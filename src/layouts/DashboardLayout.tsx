@@ -51,7 +51,7 @@ export function DashboardLayout({
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F8FAFC' }}>
-      
+
       {/* Mobile Drawer Overlay Backdrop */}
       {mobileMenuOpen && (
         <div
@@ -137,7 +137,7 @@ export function DashboardLayout({
               <div style={{ fontSize: '14px', fontWeight: '700', color: '#FFFFFF', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {company?.company_name || 'Fleet Partner'}
               </div>
-              
+
               <div style={{ fontSize: '11px', color: '#10B981', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '700', marginTop: '2px' }}>
                 <ShieldCheck size={12} /> Verified Company
               </div>
@@ -210,7 +210,7 @@ export function DashboardLayout({
 
       {/* Main Content Area */}
       <div className="dashboard-main-content" style={{ flex: 1, marginLeft: '270px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        
+
         {/* Mobile Floating Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(true)}
@@ -247,9 +247,8 @@ export function DashboardLayout({
           flexDirection: 'column',
           gap: '32px',
         }}>
-          <Outlet context={{ company, drivers, transactions, loading, onRefresh, setIsAddDriverOpen, setIsWithdrawalOpen, handleSaveCommission }} />
+          <Outlet context={{ company, drivers, transactions, loading, onRefresh, fetchDashboardData: onRefresh, setIsAddDriverOpen, setIsWithdrawalOpen, handleSaveCommission }} />
         </main>
-
       </div>
     </div>
   );

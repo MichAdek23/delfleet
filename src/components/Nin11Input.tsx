@@ -1,17 +1,16 @@
 import React, { useRef, useEffect } from 'react';
 
-interface OtpInputProps {
+interface Nin11InputProps {
   value: string;
-  onChange: (otp: string) => void;
-  length?: number;
+  onChange: (nin: string) => void;
   disabled?: boolean;
 }
 
-export function OtpInput({ value, onChange, length = 6, disabled = false }: OtpInputProps) {
+export function Nin11Input({ value, onChange, disabled = false }: Nin11InputProps) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Split value string into array of length characters
-  const digits = Array.from({ length }, (_, i) => value[i] || '');
+  // Split value into array of 11 digits
+  const digits = Array.from({ length: 11 }, (_, i) => value[i] || '');
 
   useEffect(() => {
     if (!disabled && inputRefs.current[0]) {
@@ -24,11 +23,10 @@ export function OtpInput({ value, onChange, length = 6, disabled = false }: OtpI
 
     const newDigits = [...digits];
     newDigits[index] = char;
-    const newOtp = newDigits.join('');
-    onChange(newOtp);
+    const newNin = newDigits.join('');
+    onChange(newNin);
 
-    // Auto focus next box if digit entered
-    if (char && index < length - 1 && inputRefs.current[index + 1]) {
+    if (char && index < 10 && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1]?.focus();
     }
   };
@@ -43,17 +41,17 @@ export function OtpInput({ value, onChange, length = 6, disabled = false }: OtpI
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, length);
+    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 11);
     if (pastedData) {
       onChange(pastedData);
-      const focusIndex = Math.min(pastedData.length, length - 1);
+      const focusIndex = Math.min(pastedData.length, 10);
       inputRefs.current[focusIndex]?.focus();
     }
   };
 
   return (
-    <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', margin: '14px 0' }}>
-      {Array.from({ length }).map((_, index) => {
+    <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', flexWrap: 'wrap', margin: '16px 0' }}>
+      {Array.from({ length: 11 }).map((_, index) => {
         const isFilled = Boolean(digits[index]);
         return (
           <input
@@ -68,12 +66,12 @@ export function OtpInput({ value, onChange, length = 6, disabled = false }: OtpI
             onKeyDown={(e) => handleKeyDown(e, index)}
             onPaste={handlePaste}
             style={{
-              width: '44px',
-              height: '52px',
-              borderRadius: '12px',
+              width: '40px',
+              height: '50px',
+              borderRadius: '10px',
               border: isFilled ? '2px solid #204b7a' : '1.5px solid #CBD5E1',
               backgroundColor: disabled ? '#F1F5F9' : isFilled ? 'rgba(32, 75, 122, 0.06)' : '#FFFFFF',
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: '800',
               color: '#204b7a',
               textAlign: 'center',

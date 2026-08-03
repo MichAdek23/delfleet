@@ -139,8 +139,18 @@ button {
   border-radius: 3px;
 }
 
+/* Hide mobile controls by default on desktop viewports */
+.mobile-hamburger,
+.mobile-close-btn {
+  display: none !important;
+}
+
 /* Mobile Responsive Utility Classes */
 @media (max-width: 768px) {
+  .mobile-hide {
+    display: none !important;
+  }
+
   .auth-left-banner-col {
     display: none !important;
   }
